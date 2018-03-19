@@ -67,6 +67,13 @@
         android:scaleType="centerCrop"
         android:id="@+id/imgBtnVoice"
         android:background="@drawable/ripple_btnmic"/>
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_button"
+        android:src=""
+        />
 </LinearLayout>
 
 </LinearLayout>
