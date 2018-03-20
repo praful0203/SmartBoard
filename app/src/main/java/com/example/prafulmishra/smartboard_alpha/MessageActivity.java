@@ -40,7 +40,7 @@ public class MessageActivity extends AppCompatActivity {
     ProgressBar pbar;
     TextView lblResponse;
     String voice;
-    ImageButton imgBtnVoice;
+    ImageButton imgBtnVoice,imgBtnNotice;
     Button btnSend;
     EditText edtxtMessage;
     boolean flag;
@@ -50,6 +50,7 @@ public class MessageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
         imgBtnVoice = (ImageButton) findViewById(R.id.imgBtnVoice);
+        imgBtnNotice = (ImageButton)findViewById(R.id.imgBtnNotice);
         btnSend = (Button) findViewById(R.id.btnSend);
         edtxtMessage = (EditText) findViewById(R.id.edtxtMessage);
 
@@ -76,6 +77,14 @@ public class MessageActivity extends AppCompatActivity {
 
 
 
+            }
+        });
+
+        imgBtnNotice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),NoticeActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -64,15 +64,17 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:src="@drawable/mic11"
-        android:scaleType="centerCrop"
         android:id="@+id/imgBtnVoice"
         android:background="@drawable/ripple_btnmic"/>
 
     <ImageButton
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_button"
-        android:src=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="10dp"
+        android:id="@+id/imgBtnNotice"
+        android:background="@null"
+        android:src="@drawable/notices"
         />
 </LinearLayout>
 
