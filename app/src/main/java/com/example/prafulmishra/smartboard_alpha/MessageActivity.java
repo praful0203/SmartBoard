@@ -116,6 +116,7 @@ public class MessageActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
                     if (response.isSuccessful()) {
+                        assert response.body() != null;
                         final String myResponse = response.body().string();
 
                        /* MessageActivity.this.runOnUiThread(new Runnable() {
