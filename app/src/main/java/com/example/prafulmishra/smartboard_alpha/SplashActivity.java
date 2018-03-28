@@ -41,61 +41,18 @@ public class SplashActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         StartAnimations();
-        wifi_manager = (WifiManager) this.getApplicationContext().getSystemService(WIFI_SERVICE);
-
-                // TODO Auto-generated method stub
-                wifi_manager.setWifiEnabled(false);
-
-                try
-                {
-                    //USE REFLECTION TO GET METHOD "SetWifiAPEnabled"
-                    Method method=wifi_manager.getClass().getMethod("setWifiApEnabled", WifiConfiguration.class, boolean.class);
-                    WifiConfiguration netConfig = new WifiConfiguration();
-                    netConfig.SSID = "Smart";
-                    netConfig.preSharedKey = "smart123";
-                    netConfig.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.OPEN);
-                    netConfig.allowedProtocols.set(WifiConfiguration.Protocol.RSN);
-                    netConfig.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
-                    netConfig.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
-                    netConfig.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);
-                    netConfig.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);
-                    netConfig.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
-                    netConfig.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
-                    method.invoke(netConfig, true);
-
-                }
-                catch (NoSuchMethodException e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                catch (IllegalArgumentException e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                catch (IllegalAccessException e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                catch (InvocationTargetException e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
             }
 
     private void StartAnimations() {
         Animation anim = AnimationUtils.loadAnimation(this, R.anim.alpha);
         anim.reset();
-        LinearLayout l=(LinearLayout) findViewById(R.id.lin_lay);
+        LinearLayout l= findViewById(R.id.lin_lay);
         l.clearAnimation();
         l.startAnimation(anim);
 
         anim = AnimationUtils.loadAnimation(this, R.anim.translate);
         anim.reset();
-        ImageView iv = (ImageView) findViewById(R.id.splash);
+        ImageView iv = findViewById(R.id.splash);
         iv.clearAnimation();
         iv.startAnimation(anim);
 

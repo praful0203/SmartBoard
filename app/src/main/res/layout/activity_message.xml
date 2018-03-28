@@ -9,14 +9,6 @@
     android:id="@+id/msgView"
     tools:context="com.example.prafulmishra.smartboard_alpha.MessageActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:titleTextAppearance="@font/finurlig"
-        app:titleTextColor="@android:color/black" />
 
     <ImageView
         android:scaleType="center"
@@ -70,8 +62,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:padding="10dp"
+        android:layout_margin="4dp"
         android:id="@+id/imgBtnNotice"
         android:background="@null"
         android:src="@drawable/notices"

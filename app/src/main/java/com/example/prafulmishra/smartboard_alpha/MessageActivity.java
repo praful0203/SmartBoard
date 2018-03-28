@@ -49,10 +49,10 @@ public class MessageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
-        imgBtnVoice = (ImageButton) findViewById(R.id.imgBtnVoice);
-        imgBtnNotice = (ImageButton)findViewById(R.id.imgBtnNotice);
-        btnSend = (Button) findViewById(R.id.btnSend);
-        edtxtMessage = (EditText) findViewById(R.id.edtxtMessage);
+        imgBtnVoice = findViewById(R.id.imgBtnVoice);
+        imgBtnNotice = findViewById(R.id.imgBtnNotice);
+        btnSend = findViewById(R.id.btnSend);
+        edtxtMessage = findViewById(R.id.edtxtMessage);
 
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -271,4 +271,3 @@ public class MessageActivity extends AppCompatActivity {
         }
     }
 }
-
