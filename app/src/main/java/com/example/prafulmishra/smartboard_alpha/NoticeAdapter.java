@@ -13,8 +13,8 @@ import java.util.List;
 public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeViewHolder> {
 
     private Context context;
-    private List<ListData> data;
-    public NoticeAdapter(Context context, List<ListData> data) {
+    private List<DataGson> data = new ArrayList<>();
+    public NoticeAdapter(Context context, List<DataGson> data) {
         this.data = data;
         this.context = context;
     }
@@ -29,8 +29,8 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
     @Override
     public void onBindViewHolder(NoticeViewHolder holder, int position) {
 
-        ListData noticedata = data.get(position);
-        holder.lblId.setText(noticedata.getNotice_id());
+        DataGson noticedata = data.get(position);
+        holder.lblId.setText(noticedata.getNoticeId());
         holder.lblNotice.setText(noticedata.getNotice());
         holder.lblTime.setText(noticedata.getTime());
 
@@ -45,9 +45,9 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
         TextView lblId, lblNotice, lblTime;
         public NoticeViewHolder(View itemView) {
             super(itemView);
-        TextView lblIdb = itemView.findViewById(R.id.lblId);
-        TextView lblNotdb = itemView.findViewById(R.id.lblNotice);
-        TextView lblTimeb = itemView.findViewById(R.id.lblTime);
+        lblId = itemView.findViewById(R.id.lblId);
+        lblNotice = itemView.findViewById(R.id.lblNotice);
+        lblTime = itemView.findViewById(R.id.lblTime);
         }
     }
 }

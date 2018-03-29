@@ -29,9 +29,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -39,10 +41,10 @@ import java.util.List;
 public class NoticeActivity extends AppCompatActivity {
 
     private static final String URL = "http://smartboard.cf/app/disp_notice.php";
-    ProgressDialog pgDialog;
     TextView lblId, lblNotice, lblTime;
     RecyclerView listNotice;
-    List<ListData> listItems;
+    NoticeAdapter adapter;
+    List<DataGson> items = new ArrayList<>();
     int success;
 
     @Override
@@ -54,10 +56,6 @@ public class NoticeActivity extends AppCompatActivity {
         lblTime = findViewById(R.id.lblTime);
         listNotice = (RecyclerView)findViewById(R.id.noticelist);
         listNotice.setLayoutManager(new LinearLayoutManager(this));
-        pgDialog = new ProgressDialog(NoticeActivity.this);
-        pgDialog.setMessage("Loading...");
-        pgDialog.setCancelable(false); //By default is true
-        pgDialog.show(); //Never use this in doInBackground
         new RequestData().execute();
 
 
@@ -68,36 +66,25 @@ public class NoticeActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            listItems = new ArrayList<>();
 
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
 
-            StringRequest request = new StringRequest(URL, new com.android.volley.Response.Listener<String>() {
+            final StringRequest request = new StringRequest(URL, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 //Log.d("RESPONSE_DATA:", response);
                 //Toast.makeText(NoticeActivity.this, "Data Fetched!\n"+response, Toast.LENGTH_LONG).show();
                 //lblData.setText(response);
-                try {
-                    JSONObject jo = new JSONObject(response);
-                    for (int i = 0; i<jo.length();i++)
-                    {
-                        jo = new JSONArray().getJSONObject(i);
-                        ListData listData = new ListData(jo.getString("notice_id"),jo.getString("notice"),jo.getString("time"));
 
-                        listItems.add(listData);
+                    GsonBuilder builder = new GsonBuilder();
+                    Gson gson = builder.setLenient().create();
+                    items = Arrays.asList(gson.fromJson(response, DataGson[].class));
+                    adapter = new NoticeAdapter(getApplicationContext(),items);
+                    listNotice.setAdapter(adapter);
 
-
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                listNotice.setAdapter(new NoticeAdapter(NoticeActivity.this,listItems));
             }
         }, new com.android.volley.Response.ErrorListener() {
             @Override
@@ -115,7 +102,6 @@ public class NoticeActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            pgDialog.dismiss();
         }
     }
 
