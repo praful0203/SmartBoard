@@ -1,5 +1,6 @@
 package com.example.prafulmishra.smartboard_alpha;
 
+import android.animation.ObjectAnimator;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.provider.ContactsContract;
@@ -10,9 +11,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +41,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import io.netopen.hotbitmapgg.library.view.RingProgressBar;
+
 
 public class NoticeActivity extends AppCompatActivity {
 
@@ -46,6 +52,7 @@ public class NoticeActivity extends AppCompatActivity {
     NoticeAdapter adapter;
     List<DataGson> items = new ArrayList<>();
     int success;
+    ProgressDialog pgDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +73,10 @@ public class NoticeActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
+            pgDialog = new ProgressDialog(NoticeActivity.this);
+            pgDialog.setMessage("Loading...");
+            pgDialog.setCancelable(false); //By default is true
+            pgDialog.show(); //Never use this in doInBackground
         }
 
         @Override
@@ -82,7 +92,7 @@ public class NoticeActivity extends AppCompatActivity {
                     GsonBuilder builder = new GsonBuilder();
                     Gson gson = builder.setLenient().create();
                     items = Arrays.asList(gson.fromJson(response, DataGson[].class));
-                    adapter = new NoticeAdapter(getApplicationContext(),items);
+                    adapter = new NoticeAdapter(NoticeActivity.this,items);
                     listNotice.setAdapter(adapter);
 
             }
@@ -102,6 +112,8 @@ public class NoticeActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            pgDialog.dismiss();
+
         }
     }
 
