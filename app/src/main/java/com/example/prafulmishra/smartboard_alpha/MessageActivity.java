@@ -40,8 +40,7 @@ public class MessageActivity extends AppCompatActivity {
     ProgressBar pbar;
     TextView lblResponse;
     String voice;
-    ImageButton imgBtnVoice,imgBtnNotice;
-    Button btnSend;
+    ImageButton imgBtnVoice,imgBtnNotice,btnSend,btnAbout;
     EditText edtxtMessage;
     boolean flag;
 
@@ -52,6 +51,7 @@ public class MessageActivity extends AppCompatActivity {
         imgBtnVoice = findViewById(R.id.imgBtnVoice);
         imgBtnNotice = findViewById(R.id.imgBtnNotice);
         btnSend = findViewById(R.id.btnSend);
+        btnAbout = findViewById(R.id.btnAbout);
         edtxtMessage = findViewById(R.id.edtxtMessage);
 
         btnSend.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +85,15 @@ public class MessageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),NoticeActivity.class);
                 startActivity(intent);
+            }
+        });
+
+
+        btnAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                        Intent intent = new Intent(getApplicationContext(),WebActivity.class);
+                        startActivity(intent);
             }
         });
 

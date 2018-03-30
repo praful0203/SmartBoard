@@ -20,7 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NoticeActivity"></activity>
+        <activity android:name=".NoticeActivity" />
+        <activity android:name=".WebActivity"></activity>
     </application>
 
 </manifest>

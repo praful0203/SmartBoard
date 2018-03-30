@@ -26,8 +26,8 @@
         android:fontFamily="@font/finurlig"/>
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
     android:gravity="center">
 
     <EditText
@@ -35,38 +35,58 @@
         android:gravity="center"
         android:layout_margin="10dp"
     android:id="@+id/edtxtMessage"
+        android:layout_weight="3"
+        android:inputType="textMultiLine"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
 
-    <Button
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
+    <ImageButton
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnSend"
-        android:background="@drawable/bg_button"
-        android:text="Send Notice"
+        android:layout_weight="-1"
+        android:background="@null"
+        android:src="@drawable/sendic"
         android:textColor="#ffffff"
         android:fontFamily="@font/finurlig"
         android:textSize="20sp"
         android:textAllCaps="false"
         />
-
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+
         android:src="@drawable/mic11"
         android:id="@+id/imgBtnVoice"
         android:background="@drawable/ripple_btnmic"/>
 
     <ImageButton
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
+        android:layout_marginTop="5dp"
         android:id="@+id/imgBtnNotice"
         android:background="@null"
         android:src="@drawable/notices"
         />
 </LinearLayout>
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:paddingTop="55dp">
+    <ImageButton
+        android:id="@+id/btnAbout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:src="@drawable/about" />
+</LinearLayout>
 </LinearLayout>
