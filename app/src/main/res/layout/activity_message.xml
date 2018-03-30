@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
+    android:foreground="?android:attr/selectableItemBackground"
     android:orientation="vertical"
     android:id="@+id/msgView"
     tools:context="com.example.prafulmishra.smartboard_alpha.MessageActivity">
@@ -45,9 +46,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnSend"
         android:layout_weight="-1"
-        android:background="@null"
         android:src="@drawable/sendic"
         android:textColor="#ffffff"
+        android:background="@null"
         android:fontFamily="@font/finurlig"
         android:textSize="20sp"
         android:textAllCaps="false"
@@ -61,10 +62,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-
-        android:src="@drawable/mic11"
         android:id="@+id/imgBtnVoice"
-        android:background="@drawable/ripple_btnmic"/>
+        android:src="@drawable/mic11"
+        android:background="@drawable/ripple_effect" />
 
     <ImageButton
         android:layout_gravity="center"
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:id="@+id/imgBtnNotice"
-        android:background="@null"
+        android:background="@drawable/ripple_effect"
         android:src="@drawable/notices"
         />
 </LinearLayout>
@@ -86,7 +86,7 @@
         android:id="@+id/btnAbout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@null"
+        android:background="@drawable/ripple_btnmic"
         android:src="@drawable/about" />
 </LinearLayout>
 </LinearLayout>
